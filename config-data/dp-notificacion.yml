@@ -16,7 +16,6 @@ spring:
         format_sql: true
 
 server:
-  #port: 8081
   port: ${PORT:${SERVER_PORT:0}}
 
 springdoc:
@@ -29,15 +28,6 @@ springdoc:
 eureka:
   client:
     serviceUrl:
-      defaultZone:
-        ${EUREKA_URI:http://localhost:8090/eureka}
-      #http://localhost:8090/eureka
+      defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
   instance:
-    instance-id:
-    ${spring:
-      application:
-        name}:${spring:
-          application:
-            instance_id:${random:
-              value}}:
-    #hostname: localhost
+    instance-id: ${spring.application.name}:${random.value}
